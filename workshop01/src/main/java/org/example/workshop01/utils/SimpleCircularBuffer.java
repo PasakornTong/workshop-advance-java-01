@@ -1,36 +1,42 @@
 package org.example.workshop01.utils;
 
 public class SimpleCircularBuffer implements CircularBuffer {
+    public static final int DEFAULT_SIZE = 10;
 
     private String[] data;
     private int writeIndex;
     private int readIndex;
-    private int maxSize;
-    private static final int DEFAULT_SIZE = 10;
+    private int size;
 
     public SimpleCircularBuffer(){
         this.create();
     }
 
     public void create(){
-        this.data = new String[DEFAULT_SIZE];
+        this.create(DEFAULT_SIZE);
     }
     public void create(int size){
-        
+        this.data = new String[size];
+        this.size = size;
     }
     public void write(String input){
-
+        if(!this.isFull()) {
+            this.data[this.writeIndex] = input;
+            this.writeIndex = (this.writeIndex + 1) % this.size;
+        }
     }
     public String read(){
-        return null;
+        String rd = this.data[this.readIndex];
+        this.readIndex = (this.readIndex + 1) % this.size;
+        return rd;
     }
     public int getSize(){
-        return 0;
+        return this.size;
     }
     public boolean isEmpty(){
-        return false;
+        return this.readIndex == this.writeIndex;
     }
     public boolean isFull(){
-        return false;
+        return this.readIndex == (this.writeIndex + 1) % this.size;
     }
 }
