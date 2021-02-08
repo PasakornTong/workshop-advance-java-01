@@ -1,4 +1,4 @@
-package org.example.workshop01;
+package org.example.workshop01.utils;
 
 public interface CircularBuffer {
     public void create();

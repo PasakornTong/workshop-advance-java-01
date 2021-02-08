@@ -1,10 +1,12 @@
 package org.example.workshop01;
 
+import org.example.workshop01.utils.CircularBuffer;
+import org.example.workshop01.utils.SimpleCircularBuffer;
+
 public class Workshop01App {
 
     public static void main(String[] args) {
-        CircularBuffer circularBuffer = new CircularBuffer(10);
-        int size = circularBuffer.getSize();
-        System.out.println(size);
+        CircularBuffer cb = new SimpleCircularBuffer();
+        System.out.println(cb.getSize());
     }
 }
