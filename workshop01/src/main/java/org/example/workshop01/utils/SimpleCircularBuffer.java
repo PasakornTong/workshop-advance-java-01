@@ -8,10 +8,6 @@ public class SimpleCircularBuffer implements CircularBuffer {
     private int readIndex;
     private int size;
 
-    public SimpleCircularBuffer(){
-        this.create();
-    }
-
     public void create(){
         this.create(DEFAULT_SIZE);
     }
